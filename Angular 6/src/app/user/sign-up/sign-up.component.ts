@@ -14,14 +14,29 @@ export class SignUpComponent implements OnInit {
   numberRegex = /^([0-9]{10})/;
   showSucessMessage: boolean;
   serverErrorMessages: string;
+  stateList:any;
+  districtList:Array<Object> = [];
   
 
   constructor(private userService: UserService) { }
 
   ngOnInit() {
+   this.userService.getStates().subscribe(
+      res => {this.stateList = res;}
+    );
+    
+   
+  }
+
+  setStateCode(code){
+    this.districtList = [];
+    this.userService.getDistricts(code).subscribe(
+      res => {this.districtList.push(res); console.log(res)}
+    )
   }
 
   onSubmit(form: NgForm) {
+    console.log(form.value)
     this.userService.postUser(form.value).subscribe(
       res => {
         this.showSucessMessage = true;
@@ -49,6 +64,8 @@ export class SignUpComponent implements OnInit {
       gender:'',
       phoneNo: '',
       password: '',
+      state: '',
+      district: '',
       agree: true
     };
     form.resetForm();

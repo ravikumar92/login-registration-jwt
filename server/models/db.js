@@ -6,3 +6,5 @@ mongoose.connect(process.env.MONGODB_URI, (err) => {
 });
 
 require('./user.model');
+require('./states.model');
+require('./district.model');

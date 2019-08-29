@@ -14,6 +14,8 @@ export class UserService {
     gender:'',
     phoneNo: '',
     password: '',
+    state: '',
+    district: '',
     agree: true,
   };
 
@@ -26,7 +28,12 @@ export class UserService {
   postUser(user: User){
     return this.http.post(environment.apiBaseUrl+'/register',user,this.noAuthHeader);
   }
-
+  getStates() {
+    return this.http.get(environment.apiBaseUrl+'/states');
+  }
+  getDistricts(code){
+    return this.http.post(environment.apiBaseUrl+'/district', {code:code})
+  }
   login(authCredentials) {
     return this.http.post(environment.apiBaseUrl + '/authenticate', authCredentials,this.noAuthHeader);
   }

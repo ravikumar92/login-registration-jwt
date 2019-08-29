@@ -4,5 +4,7 @@ export class User {
     gender: String;
     phoneNo: string; 
     password: string;
+    state: String;
+    district: String;
     agree: Boolean;
 }

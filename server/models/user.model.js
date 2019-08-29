@@ -13,8 +13,7 @@ var userSchema = new mongoose.Schema({
         unique: true
     },
     phoneNo : {
-        type: Number,
-        required: 'phone number can\'t be empty',
+        type: String,
         minlength: [10, 'Inavalid phone number']
     },
     password: {

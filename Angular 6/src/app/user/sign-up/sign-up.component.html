@@ -26,6 +26,18 @@
     <label *ngIf="password.errors.minlength" class="validation-message">Enter atleast 4 characters.</label>
   </div>
   <div>
+    <select value="Select State" (change)="setStateCode($event.target.value)" required>
+        <option hidden value="" disabled selected>Select State </option>
+      <option *ngFor="let State of stateList" [value]="State.code">{{State.name}}</option>
+    </select>
+  </div>
+  <div>
+      <select value="Select State" required>
+          <option hidden value="" disabled selected>Select district </option>
+        <option *ngFor="let district of districtList">{{district.name}}</option>
+      </select>
+    </div>
+  <div>
   <input type="checkbox" [checked]="userService.selectedUser.agree" required>
   <label>Agreement and Disclmainer</label>
 </div>
